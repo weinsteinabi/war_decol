@@ -1,0 +1,230 @@
+"flagCode","country","PopulationIn1800"
+"CN","China",330000000
+"IN","India",200733034
+"RU","Russia",31295641
+"FR","France",29000000
+"JP","Japan",28000000
+"BD","Bangladesh",19191243
+"IT","Italy",19000000
+"DE","Germany",18000000
+"ID","Indonesia",16108545
+"PK","Pakistan",13119841
+"NG","Nigeria",12100860
+"ET","Ethiopia",12032589
+"ES","Spain",11500000
+"UA","Ukraine",11215490
+"GB","United Kingdom",10750000
+"TR","Turkey",9761393
+"KR","South Korea",9395000
+"PL","Poland",9000000
+"US","United States",6000000
+"IR","Iran",6000000
+"MM","Myanmar",6000000
+"CZ","Czechia",5516349
+"RO","Romania",5500000
+"IE","Ireland",5250000
+"CD","DR Congo",5163819
+"MX","Mexico",5100000
+"KP","North Korea",4345000
+"VN","Vietnam",4000000
+"NP","Nepal",4000000
+"SD","Sudan",3994154
+"EG","Egypt",3500000
+"AF","Afghanistan",3280000
+"BE","Belgium",3250000
+"HU","Hungary",3250000
+"TH","Thailand",3000000
+"TZ","Tanzania",3000000
+"AT","Austria",3000000
+"PT","Portugal",2750000
+"YE","Yemen",2593000
+"KE","Kenya",2574000
+"BR","Brazil",2500000
+"PH","Philippines",2500000
+"UG","Uganda",2500000
+"DZ","Algeria",2500000
+"MA","Morocco",2500000
+"SE","Sweden",2500000
+"BY","Belarus",2355081
+"GR","Greece",2250000
+"BG","Bulgaria",2250000
+"RS","Serbia",2147197
+"SK","Slovakia",2140651
+"KH","Cambodia",2090000
+"KZ","Kazakhstan",2041282
+"GH","Ghana",2016034
+"MZ","Mozambique",2000000
+"SA","Saudi Arabia",2000000
+"TW","Taiwan",2000000
+"NL","Netherlands",2000000
+"UZ","Uzbekistan",1919159
+"CM","Cameroon",1860054
+"LK","Sri Lanka",1750000
+"CH","Switzerland",1750000
+"BF","Burkina Faso",1665421
+"AO","Angola",1567028
+"MG","Madagascar",1500000
+"ZA","South Africa",1447911
+"TD","Chad",1432000
+"ML","Mali",1403398
+"PE","Peru",1271000
+"SY","Syria",1250000
+"HR","Croatia",1227886
+"CO","Colombia",1206000
+"CI","Ivory Coast",1088530
+"ZW","Zimbabwe",1085814
+"GE","Georgia",1072178
+"SS","South Sudan",1027378
+"SN","Senegal",1009886
+"IQ","Iraq",1000000
+"VE","Venezuela",1000000
+"DK","Denmark",1000000
+"SO","Somalia",988951
+"GN","Guinea",983959
+"RW","Rwanda",928368
+"NO","Norway",900000
+"BI","Burundi",899097
+"BO","Bolivia",887000
+"AZ","Azerbaijan",879960
+"NE","Niger",852737
+"BA","Bosnia and Herzegovina",851806
+"TN","Tunisia",800000
+"FI","Finland",800000
+"SL","Sierra Leone",794264
+"LT","Lithuania",778655
+"CL","Chile",771447
+"PG","Papua New Guinea",754894
+"ZM","Zambia",747000
+"MW","Malawi",737000
+"MD","Moldova",712558
+"BJ","Benin",636559
+"MN","Mongolia",600000
+"LV","Latvia",590588
+"AR","Argentina",534000
+"KG","Kyrgyzstan",530343
+"CA","Canada",500000
+"EC","Ecuador",500000
+"HT","Haiti",500000
+"CF","Central African Republic",479444
+"LA","Laos",470000
+"SI","Slovenia",469664
+"TJ","Tajikistan",466629
+"GT","Guatemala",462930
+"TG","Togo",445985
+"AM","Armenia",413326
+"AL","Albania",400000
+"BT","Bhutan",392287
+"MK","North Macedonia",391865
+"MR","Mauritania",382696
+"TM","Turkmenistan",367215
+"EE","Estonia",334136
+"CG","Republic of the Congo",314465
+"LR","Liberia",313543
+"PY","Paraguay",300000
+"LB","Lebanon",300000
+"OM","Oman",300000
+"JM","Jamaica",300000
+"MY","Malaysia",287000
+"LS","Lesotho",276361
+"CU","Cuba",272000
+"SV","El Salvador",248000
+"LY","Libya",230044
+"NA","Namibia",229000
+"GW","Guinea-Bissau",218167
+"IL","Israel",209954
+"ER","Eritrea",205010
+"AU","Australia",200000
+"JO","Jordan",200000
+"NZ","New Zealand",200000
+"NI","Nicaragua",186000
+"CY","Cyprus",184392
+"GY","Guyana",166034
+"PS","Palestine",165944
+"GA","Gabon",158227
+"DO","Dominican Republic",150000
+"PR","Puerto Rico",146063
+"TL","Timor-Leste",137262
+"MT","Malta",134072
+"FJ","Fiji",130533
+"HN","Honduras",130000
+"LU","Luxembourg",127030
+"ME","Montenegro",126582
+"GP","Guadeloupe",125723
+"BW","Botswana",121000
+"MQ","Martinique",104925
+"GM","Gambia",103274
+"SZ","Eswatini",86000
+"BB","Barbados",81729
+"KW","Kuwait",81280
+"SR","Suriname",80721
+"GQ","Equatorial Guinea",80377
+"PA","Panama",75600
+"BH","Bahrain",64474
+"PF","French Polynesia",62530
+"IS","Iceland",61428
+"RE","Reunion",60800
+"MU","Mauritius",59000
+"SB","Solomon Islands",56998
+"KM","Comoros",56346
+"CV","Cape Verde",55716
+"UY","Uruguay",55000
+"CR","Costa Rica",53000
+"WS","Samoa",47300
+"MV","Maldives",42378
+"AE","United Arab Emirates",40153
+"AG","Antigua and Barbuda",37000
+"NC","New Caledonia",35847
+"SG","Singapore",30000
+"GD","Grenada",29409
+"VU","Vanuatu",27791
+"BS","Bahamas",27350
+"VC","Saint Vincent and the Grenadines",25781
+"BZ","Belize",25526
+"LC","Saint Lucia",24000
+"IM","Isle of Man",23530
+"DJ","Djibouti",22848
+"ST","Sao Tome and Principe",22731
+"HK","Hong Kong",20000
+"TT","Trinidad and Tobago",20000
+"DM","Dominica",19950
+"TO","Tonga",18658
+"VI","United States Virgin Islands",18003
+"KI","Kiribati",17876
+"MO","Macau",17310
+"KN","Saint Kitts and Nevis",17202
+"FM","Micronesia",16416
+"CK","Cook Islands",16140
+"QA","Qatar",14092
+"SC","Seychelles",12522
+"GI","Gibraltar",9873
+"BM","Bermuda",9692
+"MS","Montserrat",8881
+"MC","Monaco",7789
+"GU","Guam",6053
+"MH","Marshall Islands",5828
+"LI","Liechtenstein",5802
+"SM","San Marino",5492
+"MF","Saint Martin",5380
+"GF","French Guiana",5245
+"GL","Greenland",3930
+"PW","Palau",3875
+"WF","Wallis and Futuna",3721
+"PM","Saint Pierre and Miquelon",3583
+"MP","Northern Mariana Islands",3360
+"AS","American Samoa",3005
+"AD","Andorra",2654
+"AI","Anguilla",2654
+"BL","Saint Barthelemy",2515
+"TV","Tuvalu",2499
+"KY","Cayman Islands",2439
+"BN","Brunei",2258
+"AW","Aruba",2204
+"NR","Nauru",1834
+"FO","Faroe Islands",1586
+"FK","Falkland Islands",1485
+"TK","Tokelau",1009
+"VA","Vatican City",905
+"EH","Western Sahara",743
+"TC","Turks and Caicos Islands",174
+"YT","Mayotte",65
+,"Total",984887159
