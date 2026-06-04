@@ -1,12 +1,12 @@
 ## Exploring War, Decolonization, & Factors of Independence 	
 Within this repository are the data sources and R script for my project *Exploring War, Decolonization, & Factors of Independence*, the final project of a course in risk modeling for political science. All data sources are publically accessible. Contact me [here](https://github.com/weinsteinabi#contact-information) to discuss the project further. 
 
-### Project Overview
+## Project Overview
 This project, overseen by Professor Joseph Wright of Pennsylvania State University, was an exploration of the varying roles state-sanctioned violence played on the success of colonial independence movements. We asked whether or not war involvement of either the colony or imperial power in some capacity influenced instances of decolonization amongst those colonies. To do address this, we utilized a country-year style dataset containing information for 120 countries from 1817 to 1989. These years were selected as the bookends for the age of "New Imperialism" and the eras that followed. This period is characterized by an exapansion of colonial efforts made by former colonies themselves before gradually giving way to the imperial motives of WWII and the Cold War. 
 
 Using this data, we created three logistic regression models controlling for geographic and demographic factors that address three different aspects of war: war involvement of the occupied territory, the *type* of war engaged in, and war involvement of the imperial power. Models are evaluated using results from _k_-fold cross validation techniques. Model fit and accuracy is presented in the form of specificity, senesitivity, and AUC obtained from reciever operating characteristic (ROC) curve calculations. 
 
-### Methodology
+## Methodology
 These are the steps taken to complete this project
 1) Because a number of datasets were synthesized to create our final dataset, a significant amount of cleaning had to be done prior to modeling. This includes the following: 
     - Ensuring uniform country names and country codes
@@ -25,17 +25,17 @@ These are the steps taken to complete this project
     - Model 3: identifies instances of decolonization using war engagment of the imperial power as the primary predictor, controlling for logged resources, population, and region. 
 6) Conduct _k_-fold cross validation on each model and pull AUC values, as well as sensitivity and specificity based on the average occurance of a decolonization event
 
-### Results
+## Results
 Outcomes of this project indicate fairly strong predictive power across all models, with average accuracy existing around 70% regardless of event occurance. More nuanced analysis indicates that Models 1 and 3 are mostly random when it comes to correctly predicting the occurance of decolonization event, while Model 2 was correct 75% of the time at the sample threshold utilized. Model fit, as evaluated by the AUC of the ROC curve, indicates the Model 2 is the best fitting of all models (AUC = .82). This is likely due to the inclusion of democracy metrics in the model. Further exploration should be done with this model to identify the scale of impact democracy metrics and war have on the decolonization events, as it is likely that both have prominent influences that are both being considered in the general outcome of the model. 
 
 ![ROC Curve](https://github.com/weinsteinabi/war_decol/blob/main/visuals/rocauc.png)
 
 Future directions include further developing these models with a more stable theoretical base and examining coefficients of the models upon repeated training to identify scale of influence and significance to our dependent variable. 
 
-### R Script Navigation
+## R Script Navigation
 All scripts for data cleaning can be found [here](https://github.com/weinsteinabi/war_decol/tree/main/scripts), in the scripts folder of the repository. Each is titled with the data they primarily work with. Please note that these scripts are in the process of being refined for use beyond my own system. 
 
-### Data Sources
+## Data Sources
 Below is a list of all data sources utilized in this project. Data files exist in this repository in the [data sources file](https://github.com/weinsteinabi/war_decol/tree/main/data_sources) for most sources. For those that are not (in italics), links will be included to the sources. 
 
 - **Conflict Data**: obtained from the [Correlates of War Project](https://correlatesofwar.org/data-sets/cow-war/), specifically from their 2010 versions of data. Contains data from inter- (v.4.0), intra-(v.5.1), and extra-state (v.4.0) conflicts.
@@ -46,7 +46,7 @@ Below is a list of all data sources utilized in this project. Data files exist i
 
 The **final** dataset is found separate from these files. 
 
-### Sources
+### Citations
 1) Coppedge et al. (2025). V-Dem [Country-Year/Country-Date] Dataset v15. Varieties of Democracy (V-Dem) Project. https://doi.org/10.23696/vdemds25. Accessed Nov. 15, 2025. 
 
 2) Sarkees, Meredith Reid and Frank Wayman. (2010). Resort to War: 1816 – 2007. Washington DC: CQ Press. Accessed Nov. 27, 2025.
