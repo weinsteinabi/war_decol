@@ -16,11 +16,11 @@ insert images here!!
 
 
 ### R Script Navigation
-All scripts for data cleaning can be found [here](...), in the scripts folder of the repository. Each is titled with the data they primarily work with.
+All scripts for data cleaning can be found [here](https://github.com/weinsteinabi/war_decol/tree/main/scripts), in the scripts folder of the repository. Each is titled with the data they primarily work with.
 
 
 ### Data Sources
-Below is a list of all data sources utilized in this project. Data files exist in this repository in the [data sources file](...) for most sources. For those that are not (in italics), links will be included to the sources. 
+Below is a list of all data sources utilized in this project. Data files exist in this repository in the [data sources file](https://github.com/weinsteinabi/war_decol/tree/main/data_sources) for most sources. For those that are not (in italics), links will be included to the sources. 
 
 - **Conflict Data**: obtained from the [Correlates of War Project](https://correlatesofwar.org/data-sets/cow-war/), specifically from their 2010 versions of data. Contains data from inter- (v.4.0), intra-(v.5.1), and extra-state (v.4.0) conflicts.
 - **Colony Data**: pulled from two sources, the [Colonial Dates (COLDAT) Dataset](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/T9SDEW) and Andreas Wimmer's ["From Empire to Nation-State" dataset](https://www.awimmer.com/data).
@@ -28,6 +28,7 @@ Below is a list of all data sources utilized in this project. Data files exist i
 - **Supplementary Population Data**: obtained from [World Population Review](https://worldpopulationreview.com/about), contained in three .csv files containing data for the years 1800, 1900, and 1989.
 - ***Supplementary Geographic Data***: obtained from [public web sources](https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_length_of_coastline) to supplement missing data from Wimmer's data. 
 
+The **final** dataset is found separate from these files. 
 
 ### Sources
 1) Coppedge et al. (2025). V-Dem [Country-Year/Country-Date] Dataset v15. Varieties of Democracy (V-Dem) Project. https://doi.org/10.23696/vdemds25. Accessed Nov. 15, 2025. 
