@@ -19,6 +19,9 @@ Below is a list of all data sources utilized in this project. Data files exist i
 
 The **final** dataset is found separate from these files. 
 
+## R Script Navigation
+All scripts for data cleaning and modeling can be found [here](https://github.com/weinsteinabi/war_decol/tree/main/scripts), in the scripts folder of the repository. Each is titled with the data they primarily work with. Please note that these scripts are in the process of being refined for use beyond my own system. 
+
 -----
 
 ### Methodology
@@ -48,9 +51,6 @@ Outcomes of this project indicate fairly strong predictive power across all mode
 </p>
 
 Future directions include further developing these models with a more stable theoretical base and examining coefficients of the models upon repeated training to identify scale of influence and significance to our dependent variable. 
-
-## R Script Navigation
-All scripts for data cleaning can be found [here](https://github.com/weinsteinabi/war_decol/tree/main/scripts), in the scripts folder of the repository. Each is titled with the data they primarily work with. Please note that these scripts are in the process of being refined for use beyond my own system. 
 
 ## Citations
 1) Coppedge et al. (2025). V-Dem [Country-Year/Country-Date] Dataset v15. Varieties of Democracy (V-Dem) Project. https://doi.org/10.23696/vdemds25. Accessed Nov. 15, 2025. 
