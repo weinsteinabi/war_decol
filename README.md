@@ -26,9 +26,11 @@ These are the steps taken to complete this project
 6) Conduct _k_-fold cross validation on each model and pull AUC values, as well as sensitivity and specificity based on the average occurance of a decolonization event
 
 ### Results
-Outcomes of this project indicate fairly strong predictive power across all models, with average accuracy existing around 70% regardless of event occurance. More nuanced analysis indicates that Models 1 and 3 are mostly random when it comes to correctly predicting the occurance of decolonization event, while Model 2 was correct 75% of the time at the sample threshold utilized. Model fit, as evaluated by the AUC of the ROC curve, indicates the Model 2 is the best fitting of all models (AUC = .82). 
+Outcomes of this project indicate fairly strong predictive power across all models, with average accuracy existing around 70% regardless of event occurance. More nuanced analysis indicates that Models 1 and 3 are mostly random when it comes to correctly predicting the occurance of decolonization event, while Model 2 was correct 75% of the time at the sample threshold utilized. Model fit, as evaluated by the AUC of the ROC curve, indicates the Model 2 is the best fitting of all models (AUC = .82). This is likely due to the inclusion of democracy metrics in the model. Further exploration should be done with this model to identify the scale of impact democracy metrics and war have on the decolonization events, as it is likely that both have prominent influences that are both being considered in the general outcome of the model. 
 
 ![ROC Curve](https://github.com/weinsteinabi/war_decol/blob/main/visuals/rocauc.png)
+
+Future directions include further developing these models with a more stable theoretical base and examining coefficients of the models upon repeated training to identify scale of influence and significance to our dependent variable. 
 
 ### R Script Navigation
 All scripts for data cleaning can be found [here](https://github.com/weinsteinabi/war_decol/tree/main/scripts), in the scripts folder of the repository. Each is titled with the data they primarily work with.
