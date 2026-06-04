@@ -54,33 +54,3 @@ The **final** dataset is found separate from these files.
 3) Becker, Bastian. (2019). Colonial Dates Dataset (COLDAT), https://doi.org/10.7910/DVN/T9SDEW. Harvard Dataverse, V3. Accessed Nov. 21, 2025. 
 
 4) Wimmer, A., \& Min, B. (2006). From Empire to Nation-State: Explaining Wars in the Modern World, 1816-2001. American Sociological Review, 71(6), 867–897. http://www.jstor.org/stable/25472435. Accessed Nov. 15, 2025. 
-
-5) Paine, L. (2020). Rediscovering the age of discovery. In Jowitt, C. (Ed.), The Routledge Companion to Marine and Maritime Worlds 1400-1800, 50-66. Routledge. 
-
-6) The British North America Acts,	SC 1974-75-76, c 53. (1975)
-
-7) Thomas, M. (2023). Grand Narratives: Decolonisation and Its Wars. War \& Society, 42(1), 60 - 71. https://doi.org/10.1080/07292473.2023.2150480.
-
-8) Sarkees, M. (2010). The COW Typology of War: Defining and Categorizing Wars (Version 4 of the Data). Washington DC: CQ Press.
-
-9) Mustafa, Z. (1971). The Principle of Self-Determination in International Law. The International Lawyer, 5(3), 479-487. https://www.jstor.org/stable/40704674
-
-10) Fisch, J. (2015). The Cold War and the Second Decolonization, 1945–1989. In The Right of Self-Determination of Peoples: The Domestication of an Illusion. Cambridge University Press.
-
-11) Munro, D.\& Zeisberger, C. (2011). Demographics: The Ratio of Revolution. Insead.
-
-12) Goldstone, J. (2002). Population and Security: How Demographic Change Can Lead to Violent Conflict. Journal of International Affairs, 56(1), 3-21. https://www.jstor.org/stable/24357881
-
-13) Goldstone, J. (2021). Population, rebellion and revolution. In A Research Agenda for Political Demography, 131–145.
-
-14) Kratovic, A. (2010). Testing for the Domino Effect of Self-Determination Movements: Montenegro, Kosovo, and the Serb Republic.
-
-15) Goldsmith, B. E., \& He, B. (2008). Letting Go without a Fight: Decolonization, Democracy and War, 1900-94. Journal of Peace Research, 45(5), 587–611. http://www.jstor.org/stable/27640735
-
-16) Ravlo, H., Gleditsch, N. P., \& Dorussen, H. (2003). Colonial War and the Democratic Peace. Journal of Conflict Resolution, 47(4), 520-548. doi: 10.1177/0022002703254295.
-
-17) Norbrook, Alexander. (2025). Exploiting Natural Resources in a Decolonizing World: Evidence, Sovereignty, and Development Discourses in the UN (1951–1962). The Princeton Historical Review, 10(2). 
-
-18) Boswell, T. (1989). Colonial Empires and the Capitalist World-Economy: A Time Series Analysis of Colonization, 1640-1960. American Sociological Review, 54(2), 180–196. https://doi.org/10.2307/2095789
-
-19) World Population Review. (2025). Population by Country in 1800. https://worldpopulationreview.com/country-rankings/population-by-country-in-1800 
