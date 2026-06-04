@@ -22,8 +22,7 @@ The **final** dataset is found separate from these files.
 ## R Script Navigation
 All scripts for data cleaning and modeling can be found [here](https://github.com/weinsteinabi/war_decol/tree/main/scripts), in the scripts folder of the repository. Each is titled with the data they primarily work with. Please note that these scripts are in the process of being refined for use beyond my own system. 
 
------
-
+## Project Synopsis
 ### Methodology
 Below are the steps taken to complete this project: 
 1) Because a number of datasets were synthesized to create our final dataset, a significant amount of cleaning had to be done prior to modeling. This includes the following: 
