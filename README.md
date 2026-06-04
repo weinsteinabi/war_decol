@@ -21,8 +21,8 @@ The **final** dataset is found separate from these files.
 
 -----
 
-## Methodology
-These are the steps taken to complete this project
+### Methodology
+Below are the steps taken to complete this project: 
 1) Because a number of datasets were synthesized to create our final dataset, a significant amount of cleaning had to be done prior to modeling. This includes the following: 
     - Ensuring uniform country names and country codes
     - Ensuring unifrom conflict names and conflict codes (a change in the coding system made this necessary to do manually
@@ -40,7 +40,7 @@ These are the steps taken to complete this project
     - Model 3: identifies instances of decolonization using war engagment of the imperial power as the primary predictor, controlling for logged resources, population, and region. 
 6) Conduct _k_-fold cross validation on each model and pull AUC values, as well as sensitivity and specificity based on the average occurance of a decolonization event
 
-## Results
+### Results
 Outcomes of this project indicate fairly strong predictive power across all models, with average accuracy existing around 70% regardless of event occurance. More nuanced analysis indicates that Models 1 and 3 are mostly random when it comes to correctly predicting the occurance of decolonization event, while Model 2 was correct 75% of the time at the sample threshold utilized. Model fit, as evaluated by the AUC of the ROC curve, indicates the Model 2 is the best fitting of all models (AUC = .82). This is likely due to the inclusion of democracy metrics in the model. Further exploration should be done with this model to identify the scale of impact democracy metrics and war have on the decolonization events, as it is likely that both have prominent influences that are both being considered in the general outcome of the model. 
 
 <p align="center">
