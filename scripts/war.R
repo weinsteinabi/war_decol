@@ -12,10 +12,10 @@ library(R.utils)
 library(reshape2)
 
 #import data
-wimmerWar_full <- read_excel("Data/WimmerMin1.0.xls")
-cow_extra <- read_csv("Data/Extra-StateWarData_v4.0.csv")
-cow_inter <- read_csv("Data/Inter-StateWarData_v4.0.csv")
-cow_intra <- read_csv("Data/Intra-StateWarData_v4.1.csv")
+wimmerWar_full <- read_excel("data/WimmerMin1.0.xls")
+cow_extra <- read_csv("data/Extra-StateWarData_v4.0.csv")
+cow_inter <- read_csv("data/Inter-StateWarData_v4.0.csv")
+cow_intra <- read_csv("data/Intra-StateWarData_v4.1.csv")
 
 #######################################################################################################
 #War Panel

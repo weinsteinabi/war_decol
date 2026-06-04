@@ -10,7 +10,7 @@ library(tidyverse)
 library(kableExtra)
 
 #import data
-warcolony <- read_csv("Data/warcolonyfinal.csv")
+warcolony <- read_csv("warcolonyfinal.csv")
 warcolony <- warcolony %>% dplyr::select(-c(...1))
 
 warcolony <- warcolony[complete.cases(warcolony$war), ]

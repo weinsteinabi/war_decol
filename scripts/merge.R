@@ -10,6 +10,8 @@ library(reshape2)
 library(xts)
 
 #data merge
+# using objects created in war.R, controlchar.R, and colonization.R
+# modify code if saved as different objects
 #note: colony_char data is lagged or constant 
 finalDraft <- full_join(colonies, colony_char, by = c("year", "colony_cowcode", "country"))
 finalDraft <- finalDraft %>% group_by(colony_cowcode) %>% mutate(

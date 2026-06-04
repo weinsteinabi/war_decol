@@ -22,9 +22,9 @@ tables <- page %>% html_nodes("table")
 mntData <- tables[[1]] %>% 
   html_table(fill = TRUE)
 
-wimmerWar_full <- read_excel("Data/WimmerMin1.0.xls")
+wimmerWar_full <- read_excel("data/WimmerMin1.0.xls")
 
-vdem_full <- readRDS("C:/Users/abiwe/OneDrive - The Pennsylvania State University/PLSC - Political Science/PLSC 497 - Modeling Political Risk/FinalProject/V-Dem-CY-Full+Others-v15.rds")
+vdem_full <- readRDS("data/V-Dem-CY-Full+Others-v15.rds")
 
 ########################################################################################
 #panel data for miscellaneous characteristics of colonies

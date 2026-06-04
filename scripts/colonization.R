@@ -11,8 +11,8 @@ library(reshape2)
 
 
 #import data
-wimmerWar_full <- read_excel("Data/WimmerMin1.0.xls")
-colony_colonizer <- read_csv("Data/COLDAT_dyads.csv")
+wimmerWar_full <- read_excel("data/WimmerMin1.0.xls")
+colony_colonizer <- read_csv("data/COLDAT_dyads.csv")
 
 ###############################################################################################
 #panel data for colonies + colonizers
