@@ -28,7 +28,7 @@ These are the steps taken to complete this project
 ### Results
 Outcomes of this project indicate fairly strong predictive power across all models, with average accuracy existing around 70% regardless of event occurance. More nuanced analysis indicates that Models 1 and 3 are mostly random when it comes to correctly predicting the occurance of decolonization event, while Model 2 was correct 75% of the time at the sample threshold utilized. Model fit, as evaluated by the AUC of the ROC curve, indicates the Model 2 is the best fitting of all models (AUC = .82). 
 
-![ROC Curve](/weinsteinabi/war_decol/tree/main/visuals/rocauc.pdf)
+![ROC Curve](https://github.com/weinsteinabi/war_decol/blob/main/weinsteinabi/war_decol/tree/main/visuals/rocauc.pdf)
 
 ### R Script Navigation
 All scripts for data cleaning can be found [here](https://github.com/weinsteinabi/war_decol/tree/main/scripts), in the scripts folder of the repository. Each is titled with the data they primarily work with.
