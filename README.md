@@ -1,4 +1,4 @@
-## Exploring War, Decolonization, & Factors of Independence 	
+# Exploring War, Decolonization, & Factors of Independence 	
 Within this repository are the data sources and R script for my project *Exploring War, Decolonization, & Factors of Independence*, the final project of a course in risk modeling for political science. All data sources are publically accessible. Contact me [here](https://github.com/weinsteinabi#contact-information) to discuss the project further. 
 
 This project was completed on December 15th, 2025. It was added to this profile on June 4th, 2026. 
