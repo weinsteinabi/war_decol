@@ -1,7 +1,5 @@
 ## **Exploring War, Decolonization, and Factors of Independence**
-Abigail Weinstein
-PLSC 497.2 Final Report   
-December 15, 2025   
+Abigail Weinstein | PLSC 497.2 Final Report | December 15, 2025   
 
 During the "Age of Discovery", what we have now come to know as European colonialism began to take shape. With Portugal's initial exploration and eventual settlement of the north and west of Africa, the age of cross-continental movement and conquest fell to the promise of what lay beyond the European coastline. Motivated by new markets, trade routes, and sources of wealth, the major European empires began moving forward with trans-oceanic travel in search of territories to lay stake to (5). Soon, a "civilizing" mission began to take shape and settlement became not only a means to establish markets, but to proselytize as well. While this became practice in North and Western Africa, the "Age of Discovery" and European imperialism truly gained momentum with Christopher Colombus' "discovery" the Americas on his voyage to India. In the two centuries that followed, Europe transformed from a relatively isolated cluster of nations to group of constantly warring global empires, with territories spanning from Canada to the Philippines and everywhere in between. In the 19th century, new empires rose to overtake the declining European powers, taking their colonies and establishing new ones. Six centuries later, though, we see very few of these colonies remaining. There are a few exceptions - the United State's Guam and France's French Polynesia - but the extremely colonized world is now largely independent (6). 
 
