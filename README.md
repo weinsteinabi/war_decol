@@ -9,20 +9,20 @@ Using this data, we created three logistic regression models controlling for geo
 ### Methodology
 These are the steps taken to complete this project
 1) Because a number of datasets were synthesized to create our final dataset, a significant amount of cleaning had to be done prior to modeling. This includes the following: 
-  - Ensuring uniform country names and country codes 
-  - Ensuring unifrom conflict names and conflict codes (a change in the coding system made this necessary to do manually)
-  - Transforming population and geographic measures into logged form, supplementing as needed
-  - Creating a *lagyear* variable to associate control and war variables with
+    - Ensuring uniform country names and country codes
+    - Ensuring unifrom conflict names and conflict codes (a change in the coding system made this necessary to do manually
+    - Transforming population and geographic measures into logged form, supplementing as needed
+    - Creating a *lagyear* variable to associate control and war variables with
 2) Once this was completed, data needed to be pivoted to exist at the country-year level. Conflict, colony, and control data was then merged on the country, year, lagyear, and country code to ensure consistency.
 3) Observations that did not have an instance of being a colony during the specified time frame (1817-1989) were excluded from the dataset. 
 4) Additional variables were created to be utilized in our models:
-  - *warsum*: calculates the number of wars the imperial power was engaged in during the previous year
-  - *war*: a flag that indicates colony participation in armed conflict during the previous year
-  - *decolonization*: a flag that indicates decolonization events during the current year
+    - *warsum*: calculates the number of wars the imperial power was engaged in during the previous year
+    - *war*: a flag that indicates colony participation in armed conflict during the previous year
+    - *decolonization*: a flag that indicates decolonization events during the current year
 5) Build the logistic regression models:
-  - Model 1: identifies instances of decolonization using war engagment of occupied territory as the primary predictor, controlling for logged population and region metrics.
-  - Model 2: identifies instances of decolonization using the _type_ of conflcit engaged in as identified by the Correlates of War, controlling for logged population, region, and imperial power democracy level.
-  - Model 3: identifies instances of decolonization using war engagment of the imperial power as the primary predictor, controlling for logged resources, population, and region. 
+    - Model 1: identifies instances of decolonization using war engagment of occupied territory as the primary predictor, controlling for logged population and region metrics
+    - Model 2: identifies instances of decolonization using the _type_ of conflcit engaged in as identified by the Correlates of War, controlling for logged population, region, and imperial power democracy level.
+    - Model 3: identifies instances of decolonization using war engagment of the imperial power as the primary predictor, controlling for logged resources, population, and region. 
 6) Conduct _k_-fold cross validation on each model and pull AUC values, as well as sensitivity and specificity based on the average occurance of a decolonization event
 
 ### Results
