@@ -21,7 +21,12 @@ The **final** dataset is found separate from these files.
 
 ## 💻 R Script Navigation
 All scripts for data cleaning and modeling can be found [here](https://github.com/weinsteinabi/war_decol/tree/main/scripts), in the scripts folder of the repository. Each is titled with the data they primarily work with. Please note that these scripts are in the process of being refined for use beyond my own system. 
-
+- *war.R*: processes conflict data from the Correlates of War and Andres Wimmer's dataset to extract war data on a yearly level for all countries. This includes identifying when wars begin, when they are active, what kind of wars are occurring, and how many are occurring within/being participated in by each country present in the data. It creates two data frames which will be used upon merging, one for colonies and another for occupying forces. 
+- *colonization.R*: identifies which countries are occupied by whom at a particular time, as well as duration of occupation for each country in the dataset. 
+- *controlchar.R*: processes control variable data for each country observed. This includes data regarding democratic presence in government, population, coastlines, and region.
+- *merge.R*: this file takes data processed in the three files above and combines it into a colony-country dyadic dataset for every year that colony is occupied. This introduces the *decolonized* flag and lags all conflict and control data presented as to provide us with the means to predict decolonization instances using the previous year's conflict information.
+- *datadescription.R*: produces summary tables and visuals to identify relationships between key variables.
+- *modeltests.R*: builds our three models and performs *k*-fold cross-validation to determine model accuracy.
 ## 🥼 Methodology
 Below are the steps taken to complete this project: 
 1) Because a number of datasets were synthesized to create our final dataset, a significant amount of cleaning had to be done prior to modeling. This includes the following: 
