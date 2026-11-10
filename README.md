@@ -28,18 +28,19 @@ All scripts for data cleaning and modeling can be found [here](https://github.co
 - *datadescription.R*: produces summary tables and visuals to identify relationships between key variables.
 - *modeltests.R*: builds our three models and performs *k*-fold cross-validation to determine model accuracy.
 ## 🥼 Methodology
-Below are the steps taken to complete this project: 
-1) Because a number of datasets were synthesized to create our final dataset, a significant amount of cleaning had to be done prior to modeling. This includes the following: 
-    - Ensuring uniform country names and country codes
-    - Ensuring unifrom conflict names and conflict codes (a change in the coding system made this necessary to do manually
-    - Transforming population and geographic measures into logged form, supplementing as needed
-    - Creating a *lagyear* variable to associate control and war variables with
-2) Once this was completed, data needed to be pivoted to exist at the country-year level. Conflict, colony, and control data was then merged on the country, year, lagyear, and country code to ensure consistency.
-3) Observations that did not have an instance of being a colony during the specified time frame (1817-1989) were excluded from the dataset. 
-4) Additional variables were created to be utilized in our models:
-    - *warsum*: calculates the number of wars the imperial power was engaged in during the previous year
-    - *war*: a flag that indicates colony participation in armed conflict during the previous year
-    - *decolonization*: a flag that indicates decolonization events during the current year
+### Data Processing
+Data was expanded to have an observation per year of occupation. Observations that fell outside the date range of 1817 to 1989 were excluded. In order to accurately develop our models, we must first engage in some degree of data processing. These is perhaps the most tedious portion of the project, as we are combining and restructuring five data sets. To properly do this, we need to ensure that naming and coding is consistent across countries and conflicts. This was done manually for our conflict data, as there was a change in coding procedure during the time period some datasets were created. Flags for the following events were also created: 
+- war: binary, indicates an active war in that country-year
+- war onset: binary, marks start year of a conflict
+- war type: categorical, indicates interstate (1), extrastate (2), or intrastate (3) conflict
+- colony: binary, indicates the existence of the territory as a country or colony (1 = colony)
+- decolonized: binary, indicates whether a decolonization event occurred that year
+  
+A sum of the total wars engaged in by each country in an observation was also calculated. War time data was split into two data sets, one to be used as the basis for colony data and another to be used as colonizer data. The same was done with our control characteristics. The colony and decolonized flags were used to remove countries from the data set after the gained independence. In some cases, countries did reenter the data set.
+
+With the expansion complete and each needed dataset created, the merge was possible. The first merge combined colony records and colony characteristic data. Colonizer characteristic data was added following this, which contained only the democracy score of the occupying nation. Conflict data relevant to the occupying nation, the number of conflicts engaged in annually, was attached. Finally, conflict data relevant to the colonies themselves were added. This included the war onset, war, and war type flags. All characteristic and war data was lagged such that for each yearly observation, data is from the year prior.  Colony data (colony and decolonized flags) is for the year listed in the observation. 
+
+### Modeling and Validation
 5) Build the logistic regression models:
     - Model 1: identifies instances of decolonization using war engagment of occupied territory as the primary predictor, controlling for logged population and region metrics
     - Model 2: identifies instances of decolonization using the _type_ of conflcit engaged in as identified by the Correlates of War, controlling for logged population, region, and imperial power democracy level.
