@@ -50,8 +50,9 @@ The constructed models were then evaluated through repeated *k*-fold cross valid
 ## ▶️ Project Outcomes and Future Steps
 
 When evaluated at the previously mentioned threshold, all models indicate fairly strong predictive power, with an average accuracy of around 70% regardless of event occurrence. More nuanced analysis indicates that the *Colony* War model and the *Colonizer* War model  are mostly random when it comes to correctly predicting the instances of decolonization event, with sensitivity (true positive rate) not breaking 60% at our established threshold. Our War Motivations model was correct 75% of the time at the sample threshold. 
-</p align = "center">
-  <img width="460" height="400" src = "https://github.com/weinsteinabi/war_decol/blob/main/visuals/modelacc.png">
+
+<p align="center">
+  <img width="460" height="400" src="https://github.com/weinsteinabi/war_decol/blob/main/visuals/modelacc.png">
 </p>
 
 Model fit, as evaluated by the AUC of the ROC curve, supports these findings on more general level. All models have suitable AUCs, but the War Motivations model has the best with an AUC of .82, indicating a high TPR (sensitivity) across infinite thresholds. This is likely due to the inclusion of democracy metrics in the model. Further exploration should be done with this model to identify the scale of impact democracy metrics and war have on the decolonization events, as it is likely that both have prominent influences that are both being considered in the general outcome of the model. 
