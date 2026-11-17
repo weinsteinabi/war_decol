@@ -1,8 +1,6 @@
-#FINAL PROJECT LAB
-
 #import libraries
-library(readxl)
 library(rvest)
+library(readxl)
 library(xml2)
 library(dplyr)
 library(tidyverse)
@@ -13,14 +11,14 @@ library(reshape2)
 
 #import data
 wimmerWar_full <- read_excel("data/WimmerMin1.0.xls")
-cow_extra <- read_csv("data/Extra-StateWarData_v4.0.csv")
-cow_inter <- read_csv("data/Inter-StateWarData_v4.0.csv")
-cow_intra <- read_csv("data/Intra-StateWarData_v4.1.csv")
+cow_extra <- read.csv("data/Extra-StateWarData_v4.0.csv")
+cow_inter <- read.csv("data/Inter-StateWarData_v4.0.csv")
+cow_intra <- read.csv("data/Intra-StateWarData_v4.1.csv")
 
 #######################################################################################################
 #War Panel
 
-#COW data subsets - run this chunk separately! 
+#COW data subsets
 cow_extra <- cow_extra %>% dplyr::select("SideA", "ccode1", "WarName", "WarNum", "WarType", "StartYear1", "EndYear1")
 
 cow_intra <- cow_intra %>% dplyr::select("SideA", "CcodeA", "SideB", "CcodeB", "WarName", "WarNum", "WarType", "StartYear1", "EndYear1") %>%
@@ -30,8 +28,6 @@ for (i in 1:nrow(cow_intra)){
     cow_intra$SideA[i] <- cow_intra$SideB[i]
     cow_intra$CcodeA[i] <- cow_intra$CcodeB[i]}
 }
-
-#run this chunk separately! 
 
 cow_intra <- cow_intra %>% dplyr::select(-c("SideB", "CcodeB"))
 
@@ -47,24 +43,24 @@ cowWarAll <- cowWarAll %>% filter(EndYear1 >= 0)
 cowWarAll <- cowWarAll %>% filter(ccode > 0 )
 
 #flag duplicates
-cowWarAll$dupflag <- duplicated(cowWarAll[c("ccode", "WarNum")])
 cowWarAll <- cowWarAll %>% group_by(ccode, WarNum) %>% mutate(
   yrbeg = min(StartYear1),
-  yrend = max(EndYear1)
+  yrend = max(EndYear1), 
+  dupflag = n()-1
 )
 
 #drop duplicates
-cowWarAll <- cowWarAll %>% dplyr::select(-c("StartYear1", "EndYear1")) %>% filter(dupflag != TRUE)
-cowWarAll <- cowWarAll %>% dplyr::select(-c("dupflag"))
+cowWarAll <- cowWarAll %>% filter(yrbeg == StartYear1)
+cowWarAll <- cowWarAll %>% dplyr::select(-c("dupflag", "StartYear1", "EndYear1"))
 
 #rename columns
 colnames(cowWarAll) <- c("country", "cowcode", "warname", "warno", "wartype", "yrbeg", "yrend")
 cowWarAll <- cowWarAll %>% mutate(
-  country = ifelse(cowcode == 315, "Czechia", country), 
   country = ifelse(cowcode == 640, "Turkey", country), 
   country = ifelse(cowcode == 300, "Austria-Hungary", country), 
   country = ifelse(cowcode == 345, "Yugoslavia", country), 
-  country = ifelse(cowcode == 775, "Myanmar", country)
+  country = ifelse(cowcode == 775, "Myanmar", country), 
+  source = "COW"
 )
 
 #expand into annual observations
@@ -72,17 +68,16 @@ pivot2 <- with(cowWarAll, expand.grid(year = seq(min(yrbeg), max(yrend)), id = c
 pivot2 <- rename(pivot2, cowcode = id)
 
 #clean wimmer war data
-wimmerWar <- wimmerWar_full %>% dplyr::select("year", "country", "cowcode", "onset", 
+wimmerWar_full <- wimmerWar_full %>% dplyr::select("year", "country", "cowcode", "onset", 
                                           "war", "wartype", "warname","warno","yrbeg", "yrend")
 #create main df 
-war <- full_join(pivot2, wimmerWar, by = c("cowcode", "year"))
+war <- full_join(pivot2, wimmerWar_full, by = c("cowcode", "year"))
 war <- war %>% filter(cowcode > 0)
 war <- unique(war)
 
 
 #rename war data
 war <- war %>% mutate(
-  country = ifelse(cowcode == 315, "Czechia", country), 
   country = ifelse(cowcode == 640, "Turkey", country), 
   country = ifelse(cowcode == 300, "Austria-Hungary", country), 
   country = ifelse(cowcode == 345, "Yugoslavia", country), 
@@ -97,7 +92,8 @@ war <- war %>% mutate(
     wartype == "CIVIL" ~ 3, 
     wartype == "NONIND" ~ 3, 
     wartype == "NATIND" ~ 3, 
-  )
+  ), 
+  source = "Wimmer"
 )
 
 #add cowWar data to full df, filter as needed
@@ -124,6 +120,7 @@ war2 <- war2 %>% mutate(
 wars <- rbind(war, war2)
 wars <- wars %>% group_by(cowcode, warno) %>% distinct(year, .keep_all = TRUE)
 wars <- unique(wars)
+wars <- arrange()
 
 #resolve inconsistencies
 wars <- wars %>% group_by(cowcode, warno) %>% mutate(
@@ -138,11 +135,13 @@ wars <- wars %>% group_by(cowcode, warno) %>% mutate(
   onset = ifelse(is.na(onset), 0, onset)
 )
 
+#remove original datasets
+rm(cow_extra, cow_inter, cow_intra, cowWarAll, pivot2, wimmerWar_full, i)
+
 #fill in missing data and flag duplicate rows
 wars$country <- countrycode(wars$cowcode, "cown", "country.name")
 wars <- wars %>% mutate(
   country = ifelse(cowcode == 730, "Korea", country), 
-  country = ifelse(cowcode == 315, "Czechia", country), 
   country = ifelse(cowcode == 316, "Czech Republic", country))
 wars <- wars %>% group_by(cowcode, year) %>% mutate(
   warsum = sum(war), 
@@ -151,20 +150,22 @@ wars <- wars %>% group_by(cowcode, year) %>% mutate(
 )
 
 #drop and organize data
-wars <- wars %>% filter(drop == 0) %>% dplyr::select(-c("drop", "yeargr"))
 wars <- wars %>% arrange(country, year)
+wars <- wars %>% filter(drop == 0) %>% dplyr::select(-c("drop", "yeargr"))
 
 #subset data - colonizer data
 colonizer_wars <- wars %>% dplyr::select("cowcode", "country", "year", "warsum")
 newCol <- c(colonizer_cowcode = "cowcode", colonizer = "country")
 colonizer_wars <- rename(colonizer_wars, all_of(newCol))
+
+#data for this year is data from prior year
 colonizer_wars <- colonizer_wars %>% group_by(colonizer_cowcode) %>% 
   distinct(year, .keep_all = TRUE) %>% rename(lagyear = "year") %>% mutate(year = lagyear + 1)
 
 #subset data - colony data
 colony_wars <- wars %>% dplyr::select(-c("warsum"))
 newCol <- c(colony_cowcode = "cowcode", war_begin = "yrbeg", war_end = "yrend")
-colony_wars <- rename(colony_wars, newCol)
+colony_wars <- rename(colony_wars, all_of(newCol))
 
 colony_wars <- colony_wars %>% group_by(country, year) %>% mutate(
   sum_war = sum(war), 
@@ -175,7 +176,7 @@ colony_wars <- colony_wars %>% group_by(country, year, wartype) %>% mutate(
  count = n())
 colony_wars <- colony_wars %>% group_by(country, year) %>% mutate(
   wartype2 = ifelse(!is.na(wartype) & count == max(count, na.rm = TRUE), wartype, 0), 
-  wartype = ifelse(sum_war > 1 & count != sum_war, max(wartype2, na.rm = TRUE), wartype), 
+  wartype = ifelse(sum_war > 1 & count != sum_war, max(wartype2, na.rm = TRUE), wartype), #engaged in multiple wars of different types? takes the most common conflict
   onset2 = ifelse(year == war_begin, 1, 0), 
   onset = ifelse(max(onset2) == 1, 1, 0),
   onset = ifelse(is.na(onset2), 0, onset), 
@@ -185,4 +186,7 @@ colony_wars <- colony_wars %>% dplyr::select(-c(wartype2, onset2, sum_war, count
 
 colony_wars <- colony_wars %>% rename(lagyear = "year") %>% mutate(year = lagyear + 1)
   
-rm(wimmerWar, war, war2, pivot2, cowWarAll, cow_intra, cow_inter, cow_extra, newCol, i)
+#save data
+write.csv(colony_wars, "clean_data/colony_wars.csv")
+write.csv(colonizer_wars, "clean_data/colonizer_wars.csv")
+rm(war, war2, wars, newCol)

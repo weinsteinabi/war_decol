@@ -1,3 +1,4 @@
+#import libraries
 library(readr)
 library(dplyr)
 library(ggplot2)
@@ -224,6 +225,7 @@ results_table <- results %>% kable(
   kable_classic()
 results_table
 
+#dont forget to save!!
 
 rm(list = ls())
 

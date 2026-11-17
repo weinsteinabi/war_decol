@@ -1,3 +1,4 @@
+#import libraries
 library(psych)
 library(readr)
 library(kableExtra)
@@ -7,15 +8,14 @@ library(tidyr)
 library(ggplot2)
 library(tidyverse)
 
-#data description
-#NEED TO REWORK WITH NEW DATASET
 #import data
-warcolony <- read_csv("Data/warcolonyfinal.csv")
+warcolony <- read_csv("warcolonyfinal.csv")
 warcolony <- warcolony %>% dplyr::select(-c(...1))
 
 #filter data 
 warcolonysub <- warcolony %>% dplyr::select(colony_cowcode, year, decolonized, war, colonizer_warsum, wartype, 
                                             region, lncoast, lnmtn, colonizer_demoscore, lnpop)
+warcolsub2 <- warcolony %>% dplyr::select(decolonized, war, colonizer_warsum, wartype)
 warcolprim <- warcolony %>% dplyr::select(decolonized, war, colonizer_warsum, wartype, lagyear, colonizer_cowcode)
 
 #create count table for vars - all
@@ -34,33 +34,32 @@ summarystats <- summarystats %>% mutate(
    var = rownames(summarystats), 
    rownum = row_number()
 )
-summarystats <- summarystats %>% select(var, n, mean, min, max, sd, rownum)
+summarystats <- summarystats %>% dplyr::select(var, n, mean, min, max, sd, rownum)
 summarystats <- summarystats %>% rowwise() %>% 
   mutate(across(n:sd,~ case_when(
     rownum == 1 | rownum == 2 | rownum == 7  ~ round(.x, 0), 
     rownum != 1 & rownum != 2 & rownum != 7 ~ round(.x, 2)
-  ))) %>% select(-c(rownum))
+  ))) %>% dplyr::select(-c(rownum))
 sum <- summarystats %>% mutate(
   across(n, ~ format(.x, big.mark = ","))) %>%
   kable(
     col.names = c(" ", "count", "mean", "min", "max", "std. dev."), 
-    caption = "Summary Statistics for Primary Variables",
-    digit = 2) %>% 
+    caption = "Summary Statistics for Primary Variables") %>% 
   kable_classic()
 sum
 
 #create summary statistics table - outcome and predictors
-summarystats <- psych::describe(warcolprim)
+summarystats <- psych::describe(warcolsub2)
 summarystats <- summarystats %>% dplyr::select(n) %>% mutate(
-  var = rownames(summarystats)) %>% filter(var != "lagyear")
+  var = rownames(summarystats)) %>% filter(var != "lagyear" | var != "colonizer_cowcode")
 
-pos_events <- warcolprim %>% dplyr::select(-c(lagyear)) %>% mutate(
+pos_events <- warcolsub2 %>% mutate(
   decolonized = sum(decolonized != 0), 
   war = sum(war != 0), 
   colonizer_warsum = sum(colonizer_warsum != 0, na.rm = TRUE), 
-  wartype = sum(wartype != 0))  %>% 
-  pivot_longer(decolonized:wartype, names_to = "var", values_to = "count") 
-pos_events <- pos_events %>% filter(!duplicated(pos_events))
+  wartype = sum(wartype != 0)) %>% 
+  pivot_longer(decolonized:wartype, names_to = "var", values_to = "count")
+pos_events <- pos_events %>% filter(!duplicated(pos_events)) 
 
 summarystats <- left_join(summarystats, pos_events) %>% dplyr::select(c(var, n, count))
 sum <- summarystats %>% mutate(
@@ -91,11 +90,11 @@ fig1 <- ggplot(decol1, aes(x = lagyear, y = value, color = variable)) + geom_lin
   labs(
     title = "Trends in Instances of Decolonization and War",
     subtitle = "Colonies at War",
-    x = "Year (1817 - 1989)",
+    x = "Year (1817 - 1991)",
     y = "Annual Number of Events",
     color = "Legend") + 
     scale_color_manual(labels = c("Decolonization", "Colony War"), values =c("#b27372", "#91c0ce")) + 
-    scale_x_continuous(limits = c(1815, 1990), n.breaks = 10) + 
+    scale_x_continuous(limits = c(1815, 1991), n.breaks = 10) + 
     scale_y_continuous(limits = c(-.5, 20), breaks = c(0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20)) + 
     theme_minimal() + 
     theme(
@@ -111,11 +110,11 @@ fig2 <- ggplot(decol2, aes(x = lagyear, y = value, color = variable)) + geom_lin
   labs(
     title = "Trends in Instances of Decolonization and War",
     subtitle = "Colonizers at War", 
-    x = "Year (1817 - 1989)",
+    x = "Year (1817 - 1991)",
     y = "Annual Number of Events",
     color = "Legend") + 
   scale_color_manual(labels = c("Colonizer War", "Decolonization"),values = c("#0e8474","#b27372")) + 
-  scale_x_continuous(limits = c(1815, 1990), n.breaks = 10) + 
+  scale_x_continuous(limits = c(1815, 1991), n.breaks = 10) + 
   scale_y_continuous(limits = c(-.5, 90), n.breaks = 10) + 
   theme_minimal() + 
   theme(
@@ -135,7 +134,7 @@ within_colony <- warcolony %>% group_by(colony_cowcode) %>%
   pull(independence)
 sd_within <- sd(within_colony, na.rm = TRUE)
 
-ratio <- sd_within/(sd_between + sd_within) # ratio =  .53875 
+ratio <- sd_within/(sd_between + sd_within) # ratio =  .5854
 
 #save values
 warcolvar <- data.frame(var = c("Ratio", "Within-Group Variance", "Between-Group Variance"), 
@@ -150,7 +149,7 @@ within_colony <- warcolony %>% group_by(colony_cowcode) %>%
   pull(war)
 sd_within <- sd(within_colony, na.rm = TRUE)
 
-ratio <- sd_within/(sd_between + sd_within) # ratio =  .53875 
+ratio <- sd_within/(sd_between + sd_within) # ratio =  .6478 
 warcolvar$war <- c(ratio, sd_within, sd_between)
 
 
@@ -163,7 +162,7 @@ within_colony <- warcolony %>% group_by(colony_cowcode) %>%
   pull(war)
 sd_within <- sd(within_colony, na.rm = TRUE)
 
-ratio <- sd_within/(sd_between + sd_within) # ratio =  .53875 
+ratio <- sd_within/(sd_between + sd_within) # ratio =  .3496 
 warcolvar$colonizerwar <- c(ratio, sd_within, sd_between)
 
 
@@ -175,4 +174,4 @@ warcolvartable <- warcolvar %>% kable(
 warcolvartable
 
 rm(decol, decol1, decol2, fig1, fig2, summarystats, sum, between_colony, within_colony, sd_between, 
-   sd_within, ratio, pos_events, warcolonysub, warcolprim, warcolvartable, warcolvar)
+   sd_within, ratio, pos_events, warcolonysub, warcolprim, warcolvartable, warcolvar, warcolsub2)

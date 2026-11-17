@@ -37,35 +37,25 @@ pivot <- rename(pivot, colony_cowcode = id)
 colonies <- merge(colony_colonizer, pivot, by = "colony_cowcode")
 
 #only include colonization years, sort
-colonies <- colonies %>% filter((colonies$colstart_mean <= colonies$year))
-colonies <- colonies %>% mutate(
-  colonizer = case_when(
-    year > colend_mean ~ NA, 
-    year <= colend_mean ~ colonizer
-  ),
-  colonizer_cowcode = case_when(
-    year > colend_mean ~ NA, 
-    year <= colend_mean ~ colonizer_cowcode
-  )
-)
-colonies <- colonies %>% arrange(country, year)
+colonies <- colonies %>% filter((colonies$colstart_mean <= colonies$year & colonies$colend_mean >= colonies$year))
+colonies <- colonies %>% arrange(country, year) %>% select(country, year, colony_cowcode, everything())
 
 #clean data - wimmerWar_COLONY DATA:
 #select only countries colonized
-wimmerWarColonization <- wimmerWar_full %>% dplyr::select(year:country, imppower)
+wimmerWar_full <- wimmerWar_full %>% dplyr::select(year:country, imppower)
 
 #rename columns 
-wimmerWarColonization <- rename(wimmerWarColonization, colonizer = imppower)
-wimmerWarColonization <- rename(wimmerWarColonization, colony_cowcode = cowcode)
+wimmerWar_full <- rename(wimmerWar_full, colonizer = imppower)
+wimmerWar_full <- rename(wimmerWar_full, colony_cowcode = cowcode)
 
 #generate cowcodes
-wimmerWarColonization$colonizer_cowcode <- countrycode(wimmerWarColonization$colonizer, "country.name", "cown")
-wimmerWarColonization <- wimmerWarColonization %>% mutate(
+wimmerWar_full$colonizer_cowcode <- countrycode(wimmerWar_full$colonizer, "country.name", "cown")
+wimmerWar_full <- wimmerWar_full %>% mutate(
   colonizer_cowcode = ifelse(colonizer == "MIXED RULE", 10000, colonizer_cowcode)
 )
 
 
-wimmerWarColonization <- wimmerWarColonization %>% 
+wimmerWar_full <- wimmerWar_full %>% 
   group_by(country, colonizer) %>% mutate(
     colstart_mean = case_when(
       is.na(colonizer) ~ NA,
@@ -74,11 +64,10 @@ wimmerWarColonization <- wimmerWarColonization %>%
       is.na(colonizer) ~ NA, 
       !is.na(colonizer) ~ max(year)), 
     colonizer_cowcode = ifelse(colonizer == "Korea", 730, colonizer_cowcode)
-    
-  )
+  ) %>% filter(!is.na(colonizer))
 
 #merge and create colonies panel data (omg I did it yay)
-colonies <- rbind(colonies, wimmerWarColonization)
+colonies <- rbind(colonies, wimmerWar_full)
 colonies <- colonies %>% group_by(colony_cowcode, colonizer) %>% distinct(year, .keep_all = TRUE)
 
 #reorder columns
@@ -88,8 +77,7 @@ colonies <- colonies %>% dplyr::select("colony_cowcode", "country", "year", "col
 colonies$colonizer <-  countrycode(colonies$colonizer_cowcode, "cown", "country.name")
 colonies <- colonies %>% mutate(
   colonizer = ifelse(colonizer_cowcode == 10000, "MIXED RULE", colonizer), 
-  colonizer = ifelse(colonizer_cowcode == 730, "Korea", colonizer), 
-  colonizer = ifelse(colonizer_cowcode == 315, "Czechia", colonizer)
+  colonizer = ifelse(colonizer_cowcode == 730, "Korea", colonizer)
 )
 
 
@@ -102,12 +90,8 @@ colonies <- colonies %>% dplyr::select(-c("colstart_mean", "colend_mean"))
 colonies <- colonies %>% filter(year >= 1816)
 colonies <- colonies %>% arrange(country, year)
 
-colonies <- colonies %>% filter(!is.na(colonizer_cowcode) & year <= yrend)
+colonies <- colonies %>% filter(year >= yrbeg & year <= yrend)
 
-colonies <- colonies %>% group_by(country) %>% mutate(
-  yrbeg = ifelse(is.na(colonizer_cowcode), NA, yrbeg), 
-  yrend = ifelse(is.na(colonizer_cowcode), NA, yrend)
-)
-
-colonies <- colonies %>% group_by(country) %>% filter(year >= min(yrbeg, na.rm = TRUE))
-rm(pivot, wimmerWarColonization)
+#save
+write.csv(colonies, "clean_data/colonies.csv")
+rm(pivot, wimmerWar_full, colony_colonizer)
